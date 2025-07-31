@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google font for clean typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pHdVzyPjo5i67Dg2FjRcQ6Q8mAp1CjiuBjfUX8DgoXOAin/atzwCCzaQeIc+AB2Zsl+hVIE20dM3HaqH4p7I/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Jiayu Qin – Personal Site</title>
+  <style>
+    :root {
+      --primary: #007acc;
+      --secondary: #005A91;
+      --accent: #fbbc05;
+      --dark: #222;
+      --light: #f8f9fa;
+      --max-width: 1100px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.6;
+    }
+    header {
+      /* Use relative image paths in root for GitHub Pages */
+      background-image: url('hero.png');
+      background-size: cover;
+      background-position: center;
+      padding: 3rem 1rem;
+      color: #fff;
+    }
+    .header-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .avatar {
+      flex: 0 0 160px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-right: 2rem;
+      backdrop-filter: blur(5px);
+    }
+    .intro {
+      flex: 1;
+      min-width: 250px;
+    }
+    .intro h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .intro .role {
+      font-size: 1.3rem;
+      margin-bottom: .5rem;
+      color: #e3e3e3;
+    }
+    .intro .institution {
+      margin-bottom: .8rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .intro .contact a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .social-icons {
+      margin-top: .5rem;
+    }
+    .social-icons a {
+      color: #fff;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      transition: color 0.2s ease;
+    }
+    .social-icons a:hover {
+      color: var(--accent);
+    }
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary);
+      padding-left: .5rem;
+    }
+    .about p {
+      margin-bottom: 1rem;
+    }
+    .education, .experience {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .edu-item, .exp-item {
+      flex: 1 1 280px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem 1.2rem;
+    }
+    .edu-item h3, .exp-item h3 {
+      margin-bottom: .3rem;
+      font-size: 1.2rem;
+    }
+    .edu-item span, .exp-item span {
+      font-size: .9rem;
+      color: #555;
+      display: block;
+      margin-bottom: .5rem;
+    }
+    .edu-item ul, .exp-item ul {
+      list-style: disc;
+      padding-left: 1.2rem;
+      font-size: .9rem;
+    }
+    /* Publications */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .pub-item {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .pub-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .pub-item .pub-content {
+      padding: 1rem 1.2rem;
+      flex: 1;
+    }
+    .pub-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: .4rem;
+    }
+    .pub-item p {
+      font-size: .9rem;
+      margin-bottom: .6rem;
+    }
+    .pub-item .venue {
+      font-size: .85rem;
+      color: var(--primary);
+      margin-bottom: .6rem;
+      font-weight: 600;
+    }
+    .pub-item .buttons a {
+      display: inline-block;
+      margin-right: .5rem;
+      margin-bottom: .3rem;
+      padding: .3rem .7rem;
+      font-size: .8rem;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #fff;
+      background: var(--secondary);
+      transition: background .2s;
+    }
+    .pub-item .buttons a:hover {
+      background: var(--primary);
+    }
+    footer {
+      background: var(--dark);
+      color: #ccc;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p {
+      margin: 0;
+      font-size: .9rem;
+    }
+    @media (max-width: 600px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .avatar {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="avatar">JQ</div>
+      <div class="intro">
+        <h1>Jiayu Qin</h1>
+        <p class="role">Ph.D. Student</p>
+        <p class="institution">Department of Computer Science &amp; Engineering<br/>University at Buffalo, SUNY</p>
+        <p class="contact">Email: <a href="mailto:jiayuqin@buffalo.edu">jiayuqin@buffalo.edu</a></p>
+        <div class="social-icons">
+          <a href="https://github.com/jiayujack" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <!-- Add more icons if needed -->
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="about">
+      <h2>About Me</h2>
+      <p>I am a Ph.D. student in Computer Science and Engineering at the University at Buffalo. My research focuses on applying <strong>Large Language Models</strong> to <strong>computational chemistry</strong> and <strong>computational biology</strong>. I develop innovative machine learning algorithms for molecular and protein tasks, achieving state-of-the-art results. I am passionate about pushing the boundaries of AI for science and welcome collaborations that expand the reach of this work.</p>
+    </section>
+    <section class="education">
+      <h2>Education</h2>
+      <div class="edu-item">
+        <h3>University at Buffalo, SUNY</h3>
+        <span>Aug&nbsp;2022 – Present</span>
+        <ul>
+          <li>Ph.D. student in Computer Science and Engineering</li>
+        </ul>
+      </div>
+      <div class="edu-item">
+        <h3>Fudan University</h3>
+        <span>Sep&nbsp;2018 – Jun&nbsp;2022</span>
+        <ul>
+          <li>Bachelor of Engineering in Electrical Engineering</li>
+          <li>Second-class Scholarship (Top&nbsp;10%) in 2018 &amp; 2022</li>
+        </ul>
+      </div>
+    </section>
+    <section class="experience">
+      <h2>Experience</h2>
+      <div class="exp-item">
+        <h3>Harvard University</h3>
+        <span>Feb&nbsp;2025 – Present</span>
+        <ul>
+          <li>Visiting Researcher working on advanced machine learning approaches for scientific discovery.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <h3>MBZUAI</h3>
+        <span>Sep&nbsp;2024 – Jan&nbsp;2025</span>
+        <ul>
+          <li>Visiting Researcher focusing on cross‑disciplinary AI research in molecular modeling.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <h3>Galasports Co.</h3>
+        <span>Jun&nbsp;2023 – Aug&nbsp;2023</span>
+        <ul>
+          <li>Summer intern as a machine learning engineer; implemented ML solutions for sports analytics.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="publications">
+      <h2>Selected Publications</h2>
+      <div class="pub-grid">
+        <div class="pub-item">
+          <img src="prob_cl.png" alt="Graph contrastive learning illustration" />
+          <div class="pub-content">
+            <h3>A Probability Contrastive Learning Framework for Graph Representation Learning</h3>
+            <div class="venue">NeurIPS&nbsp;2024 (Poster)</div>
+            <p>An approach to alleviate false pairs in graph contrastive learning by modeling probabilistic weights that identify true positives and negatives, achieving state‑of‑the‑art results on MoleculeNet and QM9 benchmarks.</p>
+            <div class="buttons">
+              <!-- placeholder for links to code or pdf; update when available -->
+              <a href="#" onclick="return false;">PDF</a>
+              <a href="#" onclick="return false;">Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="pub-item">
+          <img src="mpi_model.png" alt="Molecule‑protein interaction illustration" />
+          <div class="pub-content">
+            <h3>Unified Biomedical Knowledge Model for Molecule‑Protein Interaction Prediction</h3>
+            <div class="venue">Under review (ICML)</div>
+            <p>We integrate multi‑modal biological knowledge graphs and use optimal transport to infer pseudo‑labels for unlabeled molecule‑protein pairs, enabling zero‑shot generalization on unseen interactions.</p>
+            <div class="buttons">
+              <a href="#" onclick="return false;">PDF</a>
+              <a href="#" onclick="return false;">Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="pub-item">
+          <img src="hero.png" alt="Abstract AI and chemistry illustration" />
+          <div class="pub-content">
+            <h3>SE‑3 Equivariant Mamba for Molecular Representation Learning</h3>
+            <div class="venue">Under review (KDD)</div>
+            <p>We leverage efficient state space models to develop an SE‑3 equivariant architecture that transforms molecular graphs into atom sequences. Our method outperforms state‑of‑the‑art transformer and GNN models on MoleculeNet and QM9 tasks.</p>
+            <div class="buttons">
+              <a href="#" onclick="return false;">PDF</a>
+              <a href="#" onclick="return false;">Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="other-papers">
+      <h2>Other Papers</h2>
+      <ul>
+        <li><em>Optimizing Unnormalized Statistical Models – a Compositional Approach</em>, TPAMI (under review)</li>
+        <li><em>Prompt Tuning Based Adapter for Vision‑Language Model Adaptation</em>, arXiv</li>
+        <li><em>KidSpeak: A General Multi‑Purpose LLM for Kids’ Speech Recognition and Screening</em>, arXiv</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Jiayu Qin. Built with ❤️ and open source tools.</p>
+  </footer>
+</body>
+</html>
