@@ -111,17 +111,17 @@
     .about p {
       margin-bottom: 1rem;
     }
+    /* Make education and experience sections vertical */
     .education, .experience {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+      display: block;
     }
     .edu-item, .exp-item {
-      flex: 1 1 280px;
+      width: 100%;
       background: #fff;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
     }
     .edu-item h3, .exp-item h3 {
       margin-bottom: .3rem;
@@ -139,10 +139,9 @@
       font-size: .9rem;
     }
     /* Publications */
+    /* Publications vertically stacked */
     .pub-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      display: block;
     }
     .pub-item {
       background: #fff;
@@ -151,6 +150,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
+      margin-bottom: 2rem;
     }
     .pub-item img {
       width: 100%;
@@ -254,7 +254,7 @@
       <h2>Experience</h2>
       <div class="exp-item">
         <h3>Harvard University</h3>
-        <span>Feb&nbsp;2025 – Present</span>
+        <span>Feb&nbsp;2025 – May&nbsp;2025</span>
         <ul>
           <li>Visiting Researcher working on advanced machine learning approaches for scientific discovery.</li>
         </ul>
@@ -278,24 +278,26 @@
       <h2>Selected Publications</h2>
       <div class="pub-grid">
         <div class="pub-item">
-          <img src="prob_cl.png" alt="Graph contrastive learning illustration" />
+          <!-- Use the uploaded contrastive.png for the graph contrastive learning paper -->
+          <img src="contrastive.png" alt="Graph contrastive learning illustration" />
           <div class="pub-content">
             <h3>A Probability Contrastive Learning Framework for Graph Representation Learning</h3>
             <div class="venue">NeurIPS&nbsp;2024 (Poster)</div>
             <p>An approach to alleviate false pairs in graph contrastive learning by modeling probabilistic weights that identify true positives and negatives, achieving state‑of‑the‑art results on MoleculeNet and QM9 benchmarks.</p>
             <div class="buttons">
-              <!-- placeholder for links to code or pdf; update when available -->
-              <a href="#" onclick="return false;">PDF</a>
+              <!-- link to the official NeurIPS 2024 PDF -->
+              <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/6adaf0cbeba11705d4ea67a62044f63d-Paper-Conference.pdf" target="_blank">PDF</a>
               <a href="#" onclick="return false;">Code</a>
             </div>
           </div>
         </div>
         <div class="pub-item">
-          <img src="mpi_model.png" alt="Molecule‑protein interaction illustration" />
+          <!-- Use the uploaded contrastive_n_augmentation image for the molecule‑protein project -->
+          <img src="contrastive_n_augmentation_img.png" alt="Molecule‑protein interaction illustration" />
           <div class="pub-content">
-            <h3>Unified Biomedical Knowledge Model for Molecule‑Protein Interaction Prediction</h3>
-            <div class="venue">Under review (ICML)</div>
-            <p>We integrate multi‑modal biological knowledge graphs and use optimal transport to infer pseudo‑labels for unlabeled molecule‑protein pairs, enabling zero‑shot generalization on unseen interactions.</p>
+        <h3>Unified Biomedical Knowledge Framework for Predicting Molecule‑Protein Interactions</h3>
+            <div class="venue">Ongoing work</div>
+            <p>We integrate multi‑modal biological knowledge graphs and use optimal transport to infer pseudo‑labels for unlabeled molecule‑protein pairs. This ongoing project aims to enable robust zero‑shot generalization on unseen interactions.</p>
             <div class="buttons">
               <a href="#" onclick="return false;">PDF</a>
               <a href="#" onclick="return false;">Code</a>
@@ -303,11 +305,12 @@
           </div>
         </div>
         <div class="pub-item">
-          <img src="hero.png" alt="Abstract AI and chemistry illustration" />
+          <!-- Use the uploaded Framework.png for the SE‑3 equivariant model -->
+          <img src="Framework.png" alt="SE‑3 equivariant model illustration" />
           <div class="pub-content">
-            <h3>SE‑3 Equivariant Mamba for Molecular Representation Learning</h3>
-            <div class="venue">Under review (KDD)</div>
-            <p>We leverage efficient state space models to develop an SE‑3 equivariant architecture that transforms molecular graphs into atom sequences. Our method outperforms state‑of‑the‑art transformer and GNN models on MoleculeNet and QM9 tasks.</p>
+        <h3>SE‑3 Equivariant State‑Space Networks for Molecular Representation</h3>
+            <div class="venue">Ongoing work</div>
+            <p>We leverage efficient state‑space models to develop an SE‑3 equivariant architecture that transforms molecular graphs into atom sequences. This ongoing work explores performance gains over transformer and GNN baselines on MoleculeNet and QM9 tasks.</p>
             <div class="buttons">
               <a href="#" onclick="return false;">PDF</a>
               <a href="#" onclick="return false;">Code</a>
@@ -319,9 +322,10 @@
     <section class="other-papers">
       <h2>Other Papers</h2>
       <ul>
-        <li><em>Optimizing Unnormalized Statistical Models – a Compositional Approach</em>, TPAMI (under review)</li>
+        <!-- To preserve anonymity during peer review, describe ongoing projects in generic terms. -->
+        <li><em>A Compositional Approach to Unnormalized Statistical Models</em> &ndash; ongoing work</li>
         <li><em>Prompt Tuning Based Adapter for Vision‑Language Model Adaptation</em>, arXiv</li>
-        <li><em>KidSpeak: A General Multi‑Purpose LLM for Kids’ Speech Recognition and Screening</em>, arXiv</li>
+        <li><em>KidSpeak: A Versatile Language Model for Children's Speech Tasks</em>, arXiv</li>
       </ul>
     </section>
   </main>
