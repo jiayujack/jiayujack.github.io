@@ -1,349 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google font for clean typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <!-- Font Awesome for social icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pHdVzyPjo5i67Dg2FjRcQ6Q8mAp1CjiuBjfUX8DgoXOAin/atzwCCzaQeIc+AB2Zsl+hVIE20dM3HaqH4p7I/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Jiayu Qin – Personal Site</title>
-  <style>
-    :root {
-      --primary: #007acc;
-      --secondary: #005A91;
-      --accent: #fbbc05;
-      --dark: #222;
-      --light: #f8f9fa;
-      --max-width: 1100px;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      background: var(--light);
-      line-height: 1.6;
-    }
-    header {
-      /* Use relative image paths in root for GitHub Pages */
-      background-image: url('hero.png');
-      background-size: cover;
-      background-position: center;
-      padding: 3rem 1rem;
-      color: #fff;
-    }
-    .header-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .avatar {
-      flex: 0 0 160px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #fff;
-      margin-right: 2rem;
-      backdrop-filter: blur(5px);
-    }
-    .intro {
-      flex: 1;
-      min-width: 250px;
-    }
-    .intro h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-    .intro .role {
-      font-size: 1.3rem;
-      margin-bottom: .5rem;
-      color: #e3e3e3;
-    }
-    .intro .institution {
-      margin-bottom: .8rem;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-    .intro .contact a {
-      color: #fff;
-      text-decoration: none;
-    }
-    .social-icons {
-      margin-top: .5rem;
-    }
-    .social-icons a {
-      color: #fff;
-      font-size: 1.5rem;
-      margin-right: 1rem;
-      transition: color 0.2s ease;
-    }
-    .social-icons a:hover {
-      color: var(--accent);
-    }
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-    section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--primary);
-      padding-left: .5rem;
-    }
-    .about p {
-      margin-bottom: 1rem;
-    }
-    /* Make education and experience sections vertical */
-    .education, .experience {
-      display: block;
-    }
-    .edu-item, .exp-item {
-      width: 100%;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 1rem 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-    .edu-item h3, .exp-item h3 {
-      margin-bottom: .3rem;
-      font-size: 1.2rem;
-    }
-    .edu-item span, .exp-item span {
-      font-size: .9rem;
-      color: #555;
-      display: block;
-      margin-bottom: .5rem;
-    }
-    .edu-item ul, .exp-item ul {
-      list-style: disc;
-      padding-left: 1.2rem;
-      font-size: .9rem;
-    }
-    /* Publications */
-    /* Publications vertically stacked */
-    .pub-grid {
-      display: block;
-    }
-    .pub-item {
-      background: #fff;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      display: flex;
-      /* arrange image on the left and text on the right */
-      flex-direction: row;
-      margin-bottom: 2rem;
-    }
-    .pub-item img {
-      /* occupy roughly 40% of the item width */
-      flex: 0 0 40%;
-      height: auto;
-      max-height: 200px;
-      object-fit: cover;
-    }
-    .pub-item .pub-content {
-      /* take remaining space */
-      flex: 1;
-      padding: 1rem 1.2rem;
-    }
-    .pub-item h3 {
-      font-size: 1.1rem;
-      margin-bottom: .4rem;
-    }
-    .pub-item p {
-      font-size: .9rem;
-      margin-bottom: .6rem;
-    }
-    .pub-item .venue {
-      font-size: .85rem;
-      color: var(--primary);
-      margin-bottom: .6rem;
-      font-weight: 600;
-    }
-    .pub-item .buttons a {
-      display: inline-block;
-      margin-right: .5rem;
-      margin-bottom: .3rem;
-      padding: .3rem .7rem;
-      font-size: .8rem;
-      border-radius: 4px;
-      text-decoration: none;
-      color: #fff;
-      background: var(--secondary);
-      transition: background .2s;
-    }
-    .pub-item .buttons a:hover {
-      background: var(--primary);
-    }
-    footer {
-      background: var(--dark);
-      color: #ccc;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    footer p {
-      margin: 0;
-      font-size: .9rem;
-    }
-    @media (max-width: 600px) {
-      .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .avatar {
-        margin-bottom: 1rem;
-      }
-      /* For narrow screens, stack publication items vertically again */
-      .pub-item {
-        flex-direction: column;
-      }
-      .pub-item img {
-        flex: none;
-        width: 100%;
-        height: 160px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiayu Qin | PhD Student in Computer Science</title>
+    <meta name="description" content="PhD student specializing in deep learning, LLMs, and multimodal representation learning">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563eb",
+                        secondary: "#1e40af",
+                        accent: "#1e3a8a"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        .publication-item {
+            border-left: 3px solid #2563eb;
+            transition: all 0.3s ease;
+        }
+        .publication-item:hover {
+            border-left-width: 6px;
+            background-color: #f8fafc;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="header-content">
-      <img src="my.jpg" class="avatar-image" width="256" height="340" />
-      <div class="intro">
-        <h1>Jiayu Qin</h1>
-        <p class="role">Ph.D. Student</p>
-        <p class="institution">Department of Computer Science &amp; Engineering<br/>University at Buffalo, SUNY</p>
-        <p class="contact">Email: <a href="mailto:jiayuqin@buffalo.edu">jiayuqin@buffalo.edu</a></p>
-        <div class="social-icons">
-          <a href="https://github.com/jiayujack" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <!-- Add more icons if needed -->
-        </div>
-      </div>
-    </div>
-  </header>
-  <main>
-    <section class="about">
-      <h2>About Me</h2>
-      <p>I am a Ph.D. student in Computer Science and Engineering at the University at Buffalo. My research centers on <strong>representation learning in AI for Science</strong>. I explore the use of <strong>Large Language Models</strong> for solving challenging problems in molecular and structural data analysis. I am committed to developing generalizable methods that bridge machine learning and scientific discovery, and I actively seek interdisciplinary collaborations.</p>
-    </section>
-    <section class="education">
-      <h2>Education</h2>
-      <div class="edu-item">
-        <h3>University at Buffalo, SUNY</h3>
-        <span>Aug&nbsp;2022 – Present</span>
-        <ul>
-          <li>Ph.D. student in Computer Science and Engineering</li>
-        </ul>
-      </div>
-      <div class="edu-item">
-        <h3>Fudan University</h3>
-        <span>Sep&nbsp;2018 – Jun&nbsp;2022</span>
-        <ul>
-          <li>Bachelor of Engineering in Electrical Engineering</li>
-          <li>Second-class Scholarship (Top&nbsp;10%) in 2018 &amp; 2022</li>
-        </ul>
-      </div>
-    </section>
-    <section class="experience">
-      <h2>Experience</h2>
-      <div class="exp-item">
-        <h3>Harvard University</h3>
-        <span>Feb&nbsp;2025 – May&nbsp;2025</span>
-        <ul>
-          <li>Visiting Researcher working on advanced machine learning approaches for scientific discovery.</li>
-        </ul>
-      </div>
-      <div class="exp-item">
-        <h3>MBZUAI</h3>
-        <span>Sep&nbsp;2024 – Jan&nbsp;2025</span>
-        <ul>
-          <li>Visiting Researcher focusing on cross‑disciplinary AI research in molecular modeling.</li>
-        </ul>
-      </div>
-      <div class="exp-item">
-        <h3>Galasports Co.</h3>
-        <span>Jun&nbsp;2023 – Aug&nbsp;2023</span>
-        <ul>
-          <li>Summer intern as a machine learning engineer; implemented ML solutions for sports analytics.</li>
-        </ul>
-      </div>
-    </section>
-    <section class="publications">
-      <h2>Selected Publications</h2>
-      <div class="pub-grid">
-        <div class="pub-item">
-          <!-- Use the uploaded contrastive.png for the graph contrastive learning paper -->
-          <img src="contrastive.png" alt="Graph contrastive learning illustration" />
-          <div class="pub-content">
-            <h3>A Probability Contrastive Learning Framework for Graph Representation Learning</h3>
-            <div class="venue">NeurIPS&nbsp;2024 (Poster)</div>
-            <p>An approach to alleviate false pairs in graph contrastive learning by modeling probabilistic weights that identify true positives and negatives, achieving state‑of‑the‑art results on MoleculeNet and QM9 benchmarks.</p>
-            <div class="buttons">
-              <!-- link to the official NeurIPS 2024 PDF -->
-              <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/6adaf0cbeba11705d4ea67a62044f63d-Paper-Conference.pdf" target="_blank">PDF</a>
-              <a href="#" onclick="return false;">Code</a>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-primary">Jiayu Qin</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-primary transition">About</a>
+                <a href="#education" class="hover:text-primary transition">Education</a>
+                <a href="#experience" class="hover:text-primary transition">Experience</a>
+                <a href="#research" class="hover:text-primary transition">Research</a>
+                <a href="#works" class="hover:text-primary transition">Other Works</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
             </div>
-          </div>
-        </div>
-        <div class="pub-item">
-          <!-- Use the uploaded contrastive_n_augmentation image for the molecule‑protein project -->
-          <img src="contrastive_n_augmentation_img.png" alt="Molecule‑protein interaction illustration" />
-          <div class="pub-content">
-        <h3>Unified Biomedical Knowledge Framework for Predicting Molecule‑Protein Interactions</h3>
-            <div class="venue">Ongoing work</div>
-            <p>We integrate multi‑modal biological knowledge graphs and use optimal transport to infer pseudo‑labels for unlabeled molecule‑protein pairs. This ongoing project aims to enable robust zero‑shot generalization on unseen interactions.</p>
-            <div class="buttons">
-              <a href="#" onclick="return false;">PDF</a>
-              <a href="#" onclick="return false;">Code</a>
+            <button class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="about" class="py-16 bg-gradient-to-r from-primary to-accent text-white">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-2/3 mb-10 md:mb-0">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Jiayu Qin</h1>
+                    <h2 class="text-xl md:text-2xl mb-6">PhD Student in Computer Science and Engineering</h2>
+                    <p class="text-lg mb-6">Specializing in deep learning, large language models, and multimodal representation learning</p>
+                    <div class="flex space-x-4">
+                        <a href="mailto:jiayuqin@buffalo.edu" class="bg-white text-primary px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition">
+                            <i class="fas fa-envelope mr-2"></i> Email
+                        </a>
+                        <a href="https://github.com/jiayujack" target="_blank" class="border-2 border-white px-6 py-2 rounded-lg font-medium hover:bg-white hover:text-primary transition">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="jiayu.jpg" alt="Jiayu Qin profile picture" class="rounded-full w-48 h-48 object-cover shadow-xl border-4 border-white">
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="pub-item">
-          <!-- Use the uploaded Framework.png for the SE‑3 equivariant model -->
-          <img src="Framework.png" alt="SE‑3 equivariant model illustration" />
-          <div class="pub-content">
-        <h3>SE‑3 Equivariant State‑Space Networks for Molecular Representation</h3>
-            <div class="venue">Ongoing work</div>
-            <p>We leverage efficient state‑space models to develop an SE‑3 equivariant architecture that transforms molecular graphs into atom sequences. This ongoing work explores performance gains over transformer and GNN baselines on MoleculeNet and QM9 tasks.</p>
-            <div class="buttons">
-              <a href="#" onclick="return false;">PDF</a>
-              <a href="#" onclick="return false;">Code</a>
+        </section>
+
+        <!-- Professional Summary -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-primary">Professional Summary</h3>
+                    <p class="text-gray-700">
+                        Motivated Ph.D. student in Computer Science and Engineering specializing in deep learning, large language models, and multimodal representation learning. Experienced in designing and scaling machine learning pipelines on large, noisy datasets for financial prediction and biomedical discovery.
+                    </p>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
+                
+                <div class="max-w-3xl mx-auto space-y-8">
+                    <!-- Education 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-semibold">University at Buffalo, SUNY</h3>
+                                <p class="text-gray-600">PhD student in Computer Science and Engineering</p>
+                            </div>
+                            <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">08/2022 - Now</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Education 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-semibold">Fudan University</h3>
+                                <p class="text-gray-600">Bachelor of Engineering, majoring in Electrical Engineering</p>
+                                <p class="text-gray-600 mt-1">Second-class Scholarship (Top 5%) at graduation</p>
+                            </div>
+                            <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">09/2018 - 06/2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section id="experience" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Work Experience</h2>
+                
+                <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Work 1 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Harvard University</h3>
+                            <span class="text-sm text-gray-600">02/2025-05/2025</span>
+                        </div>
+                        <p class="text-gray-700">Visiting Researcher</p>
+                    </div>
+                    
+                    <!-- Work 2 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">MBZUAI</h3>
+                            <span class="text-sm text-gray-600">08/2024-01/2025</span>
+                        </div>
+                        <p class="text-gray-700">Visiting Researcher</p>
+                    </div>
+                    
+                    <!-- Work 3 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">GALASPORTS CO.</h3>
+                            <span class="text-sm text-gray-600">06/2023-08/2023</span>
+                        </div>
+                        <p class="text-gray-700">Machine Learning Engineer Summer Intern</p>
+                    </div>
+                    
+                    <!-- Work 4 -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">University at Buffalo</h3>
+                            <span class="text-sm text-gray-600">09/2022-Now</span>
+                        </div>
+                        <p class="text-gray-700">Ph.D Teaching/Research Assistant</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Experience -->
+        <section id="research" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Research Experience</h2>
+                
+                <!-- Research Item 1 -->
+                <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">LLM empowered Financial News Topic Extraction & Market Prediction</h3>
+                    <p class="text-gray-600 mb-4">Ongoing Work</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>Developed LLM-driven pipeline to extract financial themes from 40+ years of news data</li>
+                        <li>Created attention scores that improved stock market prediction (15.2% annual return)</li>
+                    </ul>
+                </div>
+                
+                <!-- Research Item 2 -->
+                <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">A Probability Contrastive Learning Framework for Graph Representation Learning</h3>
+                    <p class="text-gray-600 mb-4">NeurIPS 2024</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>Solved False Pairs problem in graph contrastive learning via Bayesian modeling</li>
+                        <li>Achieved state-of-the-art results on MoleculeNet and QM9 benchmarks</li>
+                    </ul>
+                </div>
+                
+                <!-- Research Item 3 -->
+                <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">A Unified Biomedical Knowledge Model for Molecule-Protein Interaction Prediction</h3>
+                    <p class="text-gray-600 mb-4">Ongoing Work</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>Integrated multi-modal biological data using optimal transport</li>
+                        <li>Improved accuracy and zero-shot generalization for interaction prediction</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Works -->
+        <section id="works" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Other Works</h2>
+                
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <!-- Work 1 -->
+                    <div class="publication-item pl-4 py-3">
+                        <h3 class="text-lg font-semibold">Learning Unnormalized Statistical Models via Compositional Optimization (MECO)</h3>
+                        <p class="text-gray-600">ICML 2023 poster</p>
+                    </div>
+                    
+                    <!-- Work 2 -->
+                    <div class="publication-item pl-4 py-3">
+                        <h3 class="text-lg font-semibold">KidSpeak: A General Multi-Purpose LLM for Kids' Speech Recognition and Screening</h3>
+                        <p class="text-gray-600">Arxiv</p>
+                    </div>
+                    
+                    <!-- Work 3 -->
+                    <div class="publication-item pl-4 py-3">
+                        <h3 class="text-lg font-semibold">SE-3 Equivariant Mamba for Molecular Representation Learning</h3>
+                        <p class="text-gray-600">Arxiv</p>
+                    </div>
+                    
+                    <!-- Work 4 -->
+                    <div class="publication-item pl-4 py-3">
+                        <h3 class="text-lg font-semibold">Prompt tuning based adapter for vision-language model adaptation</h3>
+                        <p class="text-gray-600">Ongoing Work</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Contact</h2>
+                <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-sm">
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary text-xl mr-4"></i>
+                            <div>
+                                <h3 class="font-medium">Email</h3>
+                                <a href="mailto:jiayuqin@buffalo.edu" class="text-gray-700 hover:text-primary">jiayuqin@buffalo.edu</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-github text-primary text-xl mr-4"></i>
+                            <div>
+                                <h3 class="font-medium">GitHub</h3>
+                                <a href="https://github.com/jiayujack" target="_blank" class="text-gray-700 hover:text-primary">github.com/jiayujack</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Jiayu Qin. All rights reserved.</p>
         </div>
-      </div>
-    </section>
-    <section class="other-papers">
-      <h2>Other Papers</h2>
-      <ul>
-        <!-- To preserve anonymity during peer review, describe ongoing projects in generic terms. -->
-        <li><em>A Compositional Approach to Unnormalized Statistical Models</em> &ndash; ICML 2023</li>
-        <li><em>Prompt Tuning Based Adapter for Vision‑Language Model Adaptation</em>, arXiv</li>
-        <li><em>KidSpeak: A Versatile Language Model for Children's Speech Tasks</em>, arXiv</li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    <p>© 2025 Jiayu Qin. Designed and built end-to-end with and only with AI agents.</p>
-  </footer>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.querySelector('button').addEventListener('click', function() {
+            const nav = document.querySelector('.hidden.md\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('right-0');
+            nav.classList.toggle('bg-white');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('shadow-md');
+            nav.classList.toggle('space-y-4');
+            nav.classList.toggle('space-x-8');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
