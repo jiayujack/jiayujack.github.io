@@ -3,299 +3,604 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiayu Qin 秦嘉雨 | PhD Student in Computer Science</title>
-    <meta name="description" content="PhD student specializing in deep learning, LLMs, and multimodal representation learning">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#2563eb",
-                        secondary: "#1e40af",
-                        accent: "#1e3a8a"
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Jiayu Qin 秦嘉雨 | LLM Serving & AI4Science</title>
+    <meta name="description" content="Jiayu Qin (UB CSE PhD) — LLM application & serving (KV-cache compression/quantization, efficient inference) and AI4Science (SE(3) equivariant models, molecular representation learning).">
+    <link rel="icon" href="favicon.ico">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        .publication-item {
-            border-left: 3px solid #2563eb;
-            transition: all 0.3s ease;
+        :root {
+            --bg: #0b1220;
+            --bg2: #0f1b33;
+            --card: rgba(255,255,255,0.06);
+            --card2: rgba(255,255,255,0.09);
+            --text: rgba(255,255,255,0.92);
+            --muted: rgba(255,255,255,0.70);
+            --muted2: rgba(255,255,255,0.58);
+            --line: rgba(255,255,255,0.12);
+            --accent: #7aa7ff;
+            --accent2: #72f6c6;
+            --shadow: 0 12px 28px rgba(0,0,0,0.28);
+            --radius: 18px;
         }
-        .publication-item:hover {
-            border-left-width: 6px;
-            background-color: #f8fafc;
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+            color: var(--text);
+            background: radial-gradient(1000px 800px at 15% 5%, rgba(122,167,255,0.30), transparent 55%),
+                        radial-gradient(900px 700px at 85% 25%, rgba(114,246,198,0.22), transparent 55%),
+                        linear-gradient(180deg, var(--bg), var(--bg2));
         }
+
+        a { color: inherit; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container {
+            width: min(1120px, 92vw);
+            margin: 0 auto;
+        }
+
+        /* Top Nav */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            background: rgba(11,18,32,0.55);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            gap: 16px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 650;
+            letter-spacing: 0.2px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 0 3px rgba(122,167,255,0.18);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            text-decoration: none;
+        }
+        .pill {
+            padding: 8px 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            background: rgba(255,255,255,0.04);
+            transition: all 0.18s ease;
+            font-size: 14px;
+        }
+        .pill:hover {
+            color: var(--text);
+            border-color: rgba(122,167,255,0.35);
+            background: rgba(122,167,255,0.10);
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 56px 0 26px;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 0.65fr;
+            gap: 22px;
+            align-items: start;
+        }
+        @media (max-width: 920px) {
+            .hero-grid { grid-template-columns: 1fr; }
+        }
+        .hero-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 26px 26px 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card:before {
+            content: "";
+            position: absolute;
+            inset: -80px -80px auto auto;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle at 35% 35%, rgba(122,167,255,0.35), transparent 60%);
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+        .kicker {
+            color: var(--muted);
+            font-size: 14px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+        h1 {
+            margin: 10px 0 10px;
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.08;
+            letter-spacing: -0.8px;
+        }
+        .tagline {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.45;
+            margin: 0 0 16px;
+        }
+        .cta-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            font-size: 14px;
+            transition: all 0.18s ease;
+        }
+        .btn:hover {
+            background: rgba(122,167,255,0.12);
+            border-color: rgba(122,167,255,0.35);
+            text-decoration: none;
+        }
+        .btn.primary {
+            background: linear-gradient(135deg, rgba(122,167,255,0.30), rgba(114,246,198,0.20));
+            border-color: rgba(122,167,255,0.42);
+        }
+        .btn.primary:hover { filter: brightness(1.05); }
+
+        .side-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+        .side-title {
+            font-weight: 650;
+            margin: 0 0 8px;
+            letter-spacing: 0.2px;
+        }
+        .side-text {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.55;
+            margin: 0 0 10px;
+        }
+        .kv {
+            margin-top: 10px;
+            display: grid;
+            gap: 10px;
+        }
+        .kv-row {
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.10);
+            background: rgba(255,255,255,0.04);
+        }
+        .kv-row .k { color: var(--muted2); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;}
+        .kv-row .v { margin-top: 4px; font-size: 14px; line-height: 1.35;}
+
+        /* Sections */
+        section { padding: 28px 0; }
+        .section-title {
+            font-size: 20px;
+            margin: 0 0 14px;
+            letter-spacing: -0.2px;
+        }
+        .section-sub {
+            margin-top: -8px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+        .card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 16px 16px 14px;
+            box-shadow: var(--shadow);
+        }
+        .card h3 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            letter-spacing: -0.2px;
+        }
+        .meta {
+            color: var(--muted2);
+            font-size: 13px;
+            line-height: 1.35;
+            margin-bottom: 10px;
+        }
+        .bullets {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+        .bullets li { margin: 6px 0; }
+
+        .span-7 { grid-column: span 7; }
+        .span-5 { grid-column: span 5; }
+        .span-6 { grid-column: span 6; }
+        .span-4 { grid-column: span 4; }
+        .span-12 { grid-column: span 12; }
+        @media (max-width: 920px) {
+            .span-7, .span-5, .span-6, .span-4 { grid-column: span 12; }
+        }
+
+        .divider {
+            border-top: 1px solid var(--line);
+            margin: 10px 0 0;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .badge {
+            font-size: 12px;
+            color: rgba(255,255,255,0.78);
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.10);
+            background: rgba(255,255,255,0.05);
+        }
+
+        footer {
+            padding: 34px 0 50px;
+            color: var(--muted2);
+            font-size: 13px;
+        }
+        .foot-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+        }
+
+        /* Small helper */
+        .muted { color: var(--muted); }
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-10">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-primary">Jiayu Qin</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-primary transition">About</a>
-                <a href="#education" class="hover:text-primary transition">Education</a>
-                <a href="#experience" class="hover:text-primary transition">Experience</a>
-                <a href="#research" class="hover:text-primary transition">Research</a>
-                <a href="#works" class="hover:text-primary transition">Other Works</a>
-                <a href="#contact" class="hover:text-primary transition">Contact</a>
-            </div>
-            <button class="md:hidden focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </nav>
-    </header>
+<body>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="about" class="py-16 bg-gradient-to-r from-primary to-accent text-white">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-                <div class="md:w-2/3 mb-10 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Jiayu Qin</h1>
-                    <h2 class="text-xl md:text-2xl mb-6">PhD Student in Computer Science and Engineering</h2>
-                    <p class="text-lg mb-6">Specializing in deep learning, large language models, and multimodal representation learning</p>
-                    <div class="flex space-x-4">
-                        <a href="mailto:jiayuqin@buffalo.edu" class="bg-white text-primary px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition">
-                            <i class="fas fa-envelope mr-2"></i> Email
-                        </a>
-                        <a href="https://github.com/jiayujack" target="_blank" class="border-2 border-white px-6 py-2 rounded-lg font-medium hover:bg-white hover:text-primary transition">
-                            <i class="fab fa-github mr-2"></i> GitHub
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center">
-                    <img src="jiayu.jpg" alt="Jiayu Qin profile picture" class="rounded-full w-48 h-48 object-cover shadow-xl border-4 border-white">
-                </div>
+<div class="nav">
+    <div class="container">
+        <div class="nav-inner">
+            <div class="brand">
+                <div class="dot"></div>
+                <div>Jiayu Qin · UB CSE PhD</div>
             </div>
-        </section>
-
-        <!-- Professional Summary -->
-        <section class="py-12 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-4 text-primary">Professional Summary</h3>
-                    <p class="text-gray-700">
-                        Motivated Ph.D. student in Computer Science and Engineering specializing in deep learning, large language models, and multimodal representation learning. Experienced in designing and scaling machine learning pipelines on large, noisy datasets for financial prediction and biomedical discovery.
-                    </p>
-                </div>
+            <div class="nav-links">
+                <a class="pill" href="#about">About</a>
+                <a class="pill" href="#research">Research</a>
+                <a class="pill" href="#experience">Experience</a>
+                <a class="pill" href="#skills">Skills</a>
+                <a class="pill" href="#contact">Contact</a>
             </div>
-        </section>
-
-        <!-- Education -->
-        <section id="education" class="py-12 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Education</h2>
-                
-                <div class="max-w-3xl mx-auto space-y-8">
-                    <!-- Education 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-semibold">University at Buffalo, SUNY</h3>
-                                <p class="text-gray-600">PhD student in Computer Science and Engineering</p>
-                            </div>
-                            <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">08/2022 - Now</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Education 2 -->
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-xl font-semibold">Fudan University</h3>
-                                <p class="text-gray-600">Bachelor of Engineering, majoring in Electrical Engineering</p>
-                                <p class="text-gray-600 mt-1">Second-class Scholarship (Top 5%) at graduation</p>
-                            </div>
-                            <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">09/2018 - 06/2022</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Work Experience -->
-        <section id="experience" class="py-12 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Work Experience</h2>
-                
-                <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Work 1 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold">Harvard University</h3>
-                            <span class="text-sm text-gray-600">02/2025-05/2025</span>
-                        </div>
-                        <p class="text-gray-700">Visiting Researcher</p>
-                    </div>
-                    
-                    <!-- Work 2 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold">MBZUAI</h3>
-                            <span class="text-sm text-gray-600">08/2024-01/2025</span>
-                        </div>
-                        <p class="text-gray-700">Visiting Researcher</p>
-                    </div>
-                    
-                    <!-- Work 3 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold">GALASPORTS CO.</h3>
-                            <span class="text-sm text-gray-600">06/2023-08/2023</span>
-                        </div>
-                        <p class="text-gray-700">Machine Learning Engineer Summer Intern</p>
-                    </div>
-                    
-                    <!-- Work 4 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-semibold">University at Buffalo</h3>
-                            <span class="text-sm text-gray-600">09/2022-Now</span>
-                        </div>
-                        <p class="text-gray-700">Ph.D Teaching/Research Assistant</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Experience -->
-        <section id="research" class="py-12 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Research Experience</h2>
-                
-                <!-- Research Item 1 -->
-                <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">LLM empowered Financial News Topic Extraction & Market Prediction</h3>
-                    <p class="text-gray-600 mb-4">Ongoing Work</p>
-                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
-                        <li>Developed LLM-driven pipeline to extract financial themes from 40+ years of news data</li>
-                        <li>Created attention scores that improved stock market prediction (15.2% annual return)</li>
-                    </ul>
-                </div>
-                
-                <!-- Research Item 2 -->
-                <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">A Probability Contrastive Learning Framework for Graph Representation Learning</h3>
-                    <p class="text-gray-600 mb-4">NeurIPS 2024</p>
-                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
-                        <li>Solved False Pairs problem in graph contrastive learning via Bayesian modeling</li>
-                        <li>Achieved state-of-the-art results on MoleculeNet and QM9 benchmarks</li>
-                    </ul>
-                </div>
-                
-                <!-- Research Item 3 -->
-                <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold mb-2">A Unified Biomedical Knowledge Model for Molecule-Protein Interaction Prediction</h3>
-                    <p class="text-gray-600 mb-4">Ongoing Work</p>
-                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
-                        <li>Integrated multi-modal biological data using optimal transport</li>
-                        <li>Improved accuracy and zero-shot generalization for interaction prediction</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Other Works -->
-        <section id="works" class="py-12 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Other Works</h2>
-                
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <!-- Work 1 -->
-                    <div class="publication-item pl-4 py-3">
-                        <h3 class="text-lg font-semibold">Learning Unnormalized Statistical Models via Compositional Optimization (MECO)</h3>
-                        <p class="text-gray-600">ICML 2023 poster</p>
-                    </div>
-                    
-                    <!-- Work 2 -->
-                    <div class="publication-item pl-4 py-3">
-                        <h3 class="text-lg font-semibold">KidSpeak: A General Multi-Purpose LLM for Kids' Speech Recognition and Screening</h3>
-                        <p class="text-gray-600">Arxiv</p>
-                    </div>
-                    
-                    <!-- Work 3 -->
-                    <div class="publication-item pl-4 py-3">
-                        <h3 class="text-lg font-semibold">SE-3 Equivariant Mamba for Molecular Representation Learning</h3>
-                        <p class="text-gray-600">Arxiv</p>
-                    </div>
-                    
-                    <!-- Work 4 -->
-                    <div class="publication-item pl-4 py-3">
-                        <h3 class="text-lg font-semibold">Prompt tuning based adapter for vision-language model adaptation</h3>
-                        <p class="text-gray-600">Ongoing Work</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="py-12 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Contact</h2>
-                <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-sm">
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope text-primary text-xl mr-4"></i>
-                            <div>
-                                <h3 class="font-medium">Email</h3>
-                                <a href="mailto:jiayuqin@buffalo.edu" class="text-gray-700 hover:text-primary">jiayuqin@buffalo.edu</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fab fa-github text-primary text-xl mr-4"></i>
-                            <div>
-                                <h3 class="font-medium">GitHub</h3>
-                                <a href="https://github.com/jiayujack" target="_blank" class="text-gray-700 hover:text-primary">github.com/jiayujack</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Jiayu Qin. All rights reserved. Last Updated: Sep/17/2025</p>
         </div>
-    </footer>
+    </div>
+</div>
 
-    <script>
-        // Mobile menu toggle functionality
-        document.querySelector('button').addEventListener('click', function() {
-            const nav = document.querySelector('.hidden.md\\:flex');
-            nav.classList.toggle('hidden');
-            nav.classList.toggle('flex');
-            nav.classList.toggle('flex-col');
-            nav.classList.toggle('absolute');
-            nav.classList.toggle('top-16');
-            nav.classList.toggle('left-0');
-            nav.classList.toggle('right-0');
-            nav.classList.toggle('bg-white');
-            nav.classList.toggle('p-4');
-            nav.classList.toggle('shadow-md');
-            nav.classList.toggle('space-y-4');
-            nav.classList.toggle('space-x-8');
-        });
+<header class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-card">
+                <div class="kicker">LLM Application & Serving · AI4Science</div>
+                <h1>Jiayu Qin <span class="muted">(秦嘉雨)</span></h1>
+                <p class="tagline">
+                    I work on <b>efficient LLM serving</b> (KV-cache compression/quantization, inference trade-offs) and
+                    <b>AI4Science</b> (equivariant graph models, molecular representation learning), with an emphasis on
+                    reproducible pipelines and rigorous evaluation.
+                </p>
+                <div class="cta-row">
+                    <a class="btn primary" href="mailto:jiayuqin@buffalo.edu">Email</a>
+                    <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+                    <a class="btn" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+                <div class="badge-row">
+                    <span class="badge">KV-cache · Serving Optimization</span>
+                    <span class="badge">PyTorch · CUDA/Triton</span>
+                    <span class="badge">SE(3) Equivariance</span>
+                    <span class="badge">Molecular ML</span>
+                </div>
+            </div>
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+            <aside class="side-card" id="about">
+                <div class="side-title">At a glance</div>
+                <p class="side-text">
+                    PhD student (CSE, University at Buffalo) working with Prof. Changyou Chen and Prof. Chunchi Wu.
+                    I build methods that bridge <b>modeling</b>, <b>systems efficiency</b>, and <b>real-world evaluation</b>.
+                </p>
+                <div class="kv">
+                    <div class="kv-row">
+                        <div class="k">Current focus</div>
+                        <div class="v">LLM serving efficiency · KV-cache compression & quantization</div>
+                    </div>
+                    <div class="kv-row">
+                        <div class="k">Secondary focus</div>
+                        <div class="v">AI4Science · equivariant GNNs · molecular representation learning</div>
+                    </div>
+                    <div class="kv-row">
+                        <div class="k">Location</div>
+                        <div class="v">Buffalo, NY (ET)</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="section-sub">
+            I am a PhD student specializing in <b>LLM application and serving</b>, with additional research in <b>AI4Science</b>.
+            My work emphasizes end-to-end, reproducible systems: from algorithm design to careful benchmarking and deployment-aware evaluation.
+        </p>
+
+        <div class="grid">
+            <div class="card span-6">
+                <h3>LLM Application & Serving</h3>
+                <div class="meta">KV-cache compression / quantization · inference latency–accuracy trade-offs · production-style evaluation</div>
+                <ul class="bullets">
+                    <li>Design compression and quantization methods for KV cache to reduce memory footprint and improve throughput.</li>
+                    <li>Build workload-aware evaluation pipelines and ablation suites to measure latency, memory, and quality trade-offs.</li>
+                    <li>Engineer reproducible codebases (PyTorch/CUDA/Triton) for rapid iteration and clean integration with serving stacks.</li>
+                </ul>
+            </div>
+
+            <div class="card span-6">
+                <h3>AI4Science</h3>
+                <div class="meta">SE(3) equivariant modeling · molecular representation learning · multimodal biological knowledge</div>
+                <ul class="bullets">
+                    <li>Develop SE(3)-equivariant sequence/graph models for molecular property prediction and structure-aware learning.</li>
+                    <li>Study molecule–protein interaction prediction via OT-based pseudo-labeling and multimodal knowledge graphs.</li>
+                    <li>Research robust graph contrastive learning to mitigate false positives in self-supervised molecular learning.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="research">
+    <div class="container">
+        <h2 class="section-title">Research Projects</h2>
+        <p class="section-sub">Selected projects grouped by (1) LLM application & serving and (2) AI4Science.</p>
+
+        <div class="grid">
+            <div class="card span-12">
+                <h3>LLM Application & Serving</h3>
+                <div class="meta">Efficiency · System-aware evaluation · Inference optimization</div>
+                <div class="grid">
+                    <div class="card span-6" style="margin:0;">
+                        <h3>Dynamic KV-Cache Compression</h3>
+                        <div class="meta">KV-cache · low-rank compression · serving-aware benchmarks</div>
+                        <ul class="bullets">
+                            <li>Develop dynamic compression strategies for KV cache to improve throughput under memory constraints.</li>
+                            <li>Evaluate latency/memory/quality trade-offs across sequence lengths and batch settings.</li>
+                            <li>Implement reproducible pipelines for ablation, profiling, and deployment-relevant metrics.</li>
+                        </ul>
+                    </div>
+                    <div class="card span-6" style="margin:0;">
+                        <h3>FinTOA: Financial Topic Attention</h3>
+                        <div class="meta">LLM-assisted topic pipelines · interpretable forecasting · large-scale text processing</div>
+                        <ul class="bullets">
+                            <li>Construct topic-attention signals from large financial news corpora for macro/asset forecasting.</li>
+                            <li>Build end-to-end pipelines: embedding → topic labeling/refinement → evaluation (OOS R², DM/CW tests).</li>
+                            <li>Emphasize interpretability, reproducibility, and scalable preprocessing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card span-12">
+                <h3>AI4Science</h3>
+                <div class="meta">Equivariance · Molecular ML · Learning with biological knowledge</div>
+                <div class="grid">
+                    <div class="card span-4" style="margin:0;">
+                        <h3>GeoMamba-SE(3)</h3>
+                        <div class="meta">SE(3) equivariant modeling · Mamba-style sequence/graph architecture</div>
+                        <ul class="bullets">
+                            <li>Design SE(3)-equivariant Mamba-style models for molecular learning.</li>
+                            <li>Study inductive biases that improve generalization and sample efficiency.</li>
+                        </ul>
+                    </div>
+                    <div class="card span-4" style="margin:0;">
+                        <h3>KGOT: OT Pseudo-Labeling for MPI</h3>
+                        <div class="meta">Molecule–protein interaction · optimal transport · multimodal knowledge graphs</div>
+                        <ul class="bullets">
+                            <li>Leverage OT-based pseudo-labeling to reduce annotation cost in MPI tasks.</li>
+                            <li>Integrate multimodal biological knowledge graphs with strong molecular backbones.</li>
+                        </ul>
+                    </div>
+                    <div class="card span-4" style="margin:0;">
+                        <h3>Probability-Based Graph Contrastive Learning</h3>
+                        <div class="meta">Self-supervised learning · false-pair mitigation · robust objectives</div>
+                        <ul class="bullets">
+                            <li>Address false-positive pairs in graph contrastive learning with probabilistic weighting.</li>
+                            <li>Improve stability and performance for molecular representation learning.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Industry & academic experience focused on LLM systems, ML research, and reproducible engineering.</p>
+
+        <div class="grid">
+            <div class="card span-6">
+                <h3>Research Scientist Intern · Harvard University</h3>
+                <div class="meta">05/2024 – 08/2025 · Boston, MA</div>
+                <ul class="bullets">
+                    <li>Built reproducible pipelines for research prototyping and large-scale evaluation; collaborated closely with cross-functional teams.</li>
+                    <li>Developed ML components with careful ablations and deployment-oriented performance analysis.</li>
+                </ul>
+            </div>
+
+            <div class="card span-6">
+                <h3>PhD Researcher · University at Buffalo</h3>
+                <div class="meta">2023 – Present · Buffalo, NY</div>
+                <ul class="bullets">
+                    <li>Research across LLM serving efficiency and AI4Science; publish and iterate with advisor feedback cycles.</li>
+                    <li>Maintain clean, versioned codebases for experiments, figures, and benchmarking scripts.</li>
+                </ul>
+            </div>
+
+            <div class="card span-12">
+                <h3>Teaching Assistant · UB CSE</h3>
+                <div class="meta">CSE 418/518 (Software Security) · grading, rubrics, and structured feedback</div>
+                <ul class="bullets">
+                    <li>Designed grading rubrics and templates; provided structured feedback and reproducible evaluation artifacts.</li>
+                    <li>Supported course operations via office hours, Piazza, and project review.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-sub">A snapshot of tools and areas I use most frequently (grouped for quick scanning).</p>
+
+        <div class="grid">
+            <div class="card span-6">
+                <h3>LLM Serving & Inference</h3>
+                <div class="meta">Efficiency · memory optimization · benchmarking</div>
+                <div class="badge-row">
+                    <span class="badge">KV-cache compression</span>
+                    <span class="badge">Quantization (PTQ)</span>
+                    <span class="badge">Profiling & benchmarking</span>
+                    <span class="badge">Latency/throughput trade-offs</span>
+                </div>
+            </div>
+
+            <div class="card span-6">
+                <h3>AI4Science & Modeling</h3>
+                <div class="meta">Equivariance · graphs · molecular learning</div>
+                <div class="badge-row">
+                    <span class="badge">SE(3) equivariant models</span>
+                    <span class="badge">GNNs / geometric DL</span>
+                    <span class="badge">Optimal transport</span>
+                    <span class="badge">Molecule–protein interaction</span>
+                </div>
+            </div>
+
+            <div class="card span-6">
+                <h3>Systems & Tooling</h3>
+                <div class="meta">Engineering for iteration and reliability</div>
+                <div class="badge-row">
+                    <span class="badge">Python</span>
+                    <span class="badge">PyTorch</span>
+                    <span class="badge">CUDA / Triton</span>
+                    <span class="badge">Linux</span>
+                    <span class="badge">Git</span>
+                    <span class="badge">Docker</span>
+                </div>
+            </div>
+
+            <div class="card span-6">
+                <h3>Research Stack</h3>
+                <div class="meta">Reproducibility · experiments · writing</div>
+                <div class="badge-row">
+                    <span class="badge">Experiment tracking</span>
+                    <span class="badge">Ablations & evaluation</span>
+                    <span class="badge">LaTeX</span>
+                    <span class="badge">Data pipelines</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">
+            Feel free to reach out for collaborations on LLM serving, efficient inference, or AI4Science.
+        </p>
+        <div class="grid">
+            <div class="card span-7">
+                <h3>Email</h3>
+                <div class="meta">Fastest way to reach me</div>
+                <p class="muted" style="margin:0; line-height:1.7;">
+                    jiayuqin@buffalo.edu
+                </p>
+            </div>
+            <div class="card span-5">
+                <h3>Links</h3>
+                <div class="meta">Profiles & updates</div>
+                <ul class="bullets">
+                    <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="foot-row">
+            <div>© <span id="year"></span> Jiayu Qin</div>
+            <div class="muted">Built as a lightweight static page for GitHub Pages.</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Set footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
