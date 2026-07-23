@@ -1,0 +1,16 @@
+{
+  "name": "Jiayu Qin",
+  "short_name": "Jiayu Qin",
+  "description": "Research in efficient LLM serving, post-training, and AI for scientific applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f2ec",
+  "theme_color": "#f4f2ec",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
