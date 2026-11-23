@@ -1,11 +1,11 @@
 {
-  "name": "Jiayu Qin",
+  "name": "Jiayu Qin — Efficient & Reliable Foundation Models",
   "short_name": "Jiayu Qin",
-  "description": "Research in efficient LLM serving, post-training, and AI for scientific applications.",
+  "description": "LLM inference and serving, reinforcement learning for post-training, and machine learning for science and finance.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f4f2ec",
-  "theme_color": "#f4f2ec",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "favicon.svg",
